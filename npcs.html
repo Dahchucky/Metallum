@@ -22,7 +22,6 @@
             text-shadow: 0 0 10px rgba(235, 180, 77, 0.4);
         }
 
-        /* Seções de grupo com pergaminho */
         .npc-group {
             position: relative;
             background: linear-gradient(180deg, #c9a86a 0%, #b7925c 30%, #a27e46 80%, #8d6a36 100%);
@@ -34,7 +33,6 @@
             border: 4px solid #d7b670;
         }
 
-        /* Efeito de pergaminho nas bordas */
         .npc-group::before, .npc-group::after {
             content: '';
             position: absolute;
@@ -43,15 +41,12 @@
             height: 25px;
             background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, transparent 70%);
         }
-        .npc-group::before {
-            top: -10px;
-        }
+        .npc-group::before { top: -10px; }
         .npc-group::after {
             bottom: -10px;
             transform: rotate(180deg);
         }
 
-        /* Título do grupo dentro do pergaminho */
         .npc-group h2 {
             text-align: center;
             font-family: 'Cinzel Decorative', serif;
@@ -68,7 +63,6 @@
             z-index: 2;
         }
 
-        /* Grade centralizada com duas colunas */
         .npc-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -79,7 +73,6 @@
             align-items: start;
         }
 
-        /* Cards com leve efeito 3D no pergaminho */
         .npc-card {
             background-color: rgba(51, 33, 16, 0.9);
             border: 2px solid #d3b37a;
@@ -118,7 +111,6 @@
             color: #f1d9b3;
         }
 
-        /* Botão de voltar */
         .back-button {
             background-color: #EBB44D;
             color: #333;
@@ -130,11 +122,8 @@
             font-weight: bold;
         }
 
-        .back-button:hover {
-            background-color: #FFC107;
-        }
+        .back-button:hover { background-color: #FFC107; }
 
-        /* Responsividade */
         @media (max-width: 800px) {
             .npc-grid {
                 grid-template-columns: 1fr;
@@ -146,6 +135,61 @@
 <body>
 
     <a href="home.html" class="back-button">Voltar para o Início</a>
+
+
+    <h1>═══ ✦ ＰＣｓ ✦ ═══</h1>
+
+    <!-- Grupo dos Jogadores -->
+    <div class="npc-group">
+        <h2>Jogadores</h2>
+        <div class="npc-grid">
+            <div class="npc-card">
+                <img src="imagens/argonpx.png" alt="Argon">
+                <div class="npc-description"><h3>Argon</h3></div>
+            </div>
+
+            <div class="npc-card">
+                <img src="imagens/alan.png" alt="Alan Berrola">
+                <div class="npc-description"><h3>Alan Berrola</h3></div>
+            </div>
+
+            <div class="npc-card">
+                <img src="imagens/josuvess.png" alt="Josu Vess">
+                <div class="npc-description"><h3>Josu Vess</h3></div>
+            </div>
+
+            <div class="npc-card">
+                <img src="imagens/erato.png" alt="Erato">
+                <div class="npc-description"><h3>Erato</h3></div>
+            </div>
+
+            <div class="npc-card">
+                <img src="imagens/tobiastoko.png" alt="Tobias Toko">
+                <div class="npc-description"><h3>Tobias Toko</h3></div>
+            </div>
+
+            <div class="npc-card">
+                <img src="imagens/jjjj.png" alt="Jonathan Jonas Jorlan Júnior">
+                <div class="npc-description"><h3>Jonathan Jonas Jorlan Júnior</h3></div>
+            </div>
+
+            <div class="npc-card">
+                <img src="imagens/granolapx.png" alt="Granola">
+                <div class="npc-description"><h3>Granola</h3></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="npc-group">
+        <h2>Companions</h2>
+        <div class="npc-grid">
+            <div class="npc-card">
+                <img src="imagens/crow.png" alt="Argon">
+                <div class="npc-description"><h3>Argon</h3></div>
+            </div>
+        </div>
+    </div>
+
     <h1>═══ ✦ ＮＰＣｓ ✦ ═══</h1>
 
     <!-- VIS -->
@@ -161,44 +205,44 @@
             </div>
 
             <div class="npc-card">
-                <img src="imagens/kamorsha.png" alt="Kamorsha">
+                <img src="imagens/Velmora.png" alt="Velmora">
                 <div class="npc-description">
                     <h3>Velmora</h3>
                     <p>Molher</p>
                 </div>
             </div>
 
-            <!-- <div class="npc-card">
-                <img src="imagens/DaoMa.png" alt="Dao Ma">
-                <div class="npc-description">
-                    <h3>Dao Ma</h3>
-                    <p>Biao Ren</p>
-                </div>
-            </div> -->
+<!--            <div class="npc-card">-->
+<!--                <img src="imagens/DaoMa.png" alt="Dao Ma">-->
+<!--                <div class="npc-description">-->
+<!--                    <h3>Dao Ma</h3>-->
+<!--                    <p>Biao Ren</p>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
 
-    <!-- Albrunz -->
-    <!-- <div class="npc-group">
-        <h2>Albrunz</h2>
-        <div class="npc-grid">
-            <div class="npc-card">
-                <img src="imagens/DaoMa.png" alt="Dao Ma">
-                <div class="npc-description">
-                    <h3>Dao Ma</h3>
-                    <p>Biao Ren</p>
-                </div>
-            </div>
+<!--    &lt;!&ndash; Albrunz &ndash;&gt;-->
+<!--    <div class="npc-group">-->
+<!--        <h2>Albrunz</h2>-->
+<!--        <div class="npc-grid">-->
+<!--            <div class="npc-card">-->
+<!--                <img src="imagens/DaoMa.png" alt="Dao Ma">-->
+<!--                <div class="npc-description">-->
+<!--                    <h3>Dao Ma</h3>-->
+<!--                    <p>Biao Ren</p>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="npc-card">
-                <img src="imagens/JosuVess.png" alt="JosuVess">
-                <div class="npc-description">
-                    <h3>O Bruxador</h3>
-                    <p>O Destino final de todas as coisas</p>
-                </div>
-            </div>
-        </div> -->
-    <!-- </div> -->
+<!--            <div class="npc-card">-->
+<!--                <img src="imagens/JosuVess.png" alt="JosuVess">-->
+<!--                <div class="npc-description">-->
+<!--                    <h3>O Bruxador</h3>-->
+<!--                    <p>O Destino final de todas as coisas</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
 </body>
 </html>
