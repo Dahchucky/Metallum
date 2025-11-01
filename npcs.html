@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPCs</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #1e1b16;
+            color: #f5e7c6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #EBB44D;
+            margin-bottom: 30px;
+            font-family: 'Cinzel Decorative', serif;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(235, 180, 77, 0.4);
+        }
+
+        /* Seções de grupo com pergaminho */
+        .npc-group {
+            position: relative;
+            background: linear-gradient(180deg, #c9a86a 0%, #b7925c 30%, #a27e46 80%, #8d6a36 100%);
+            border-radius: 20px;
+            padding: 40px 20px 30px 20px;
+            margin: 60px auto;
+            max-width: 1100px;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.4), 0 0 25px rgba(0,0,0,0.6);
+            border: 4px solid #d7b670;
+        }
+
+        /* Efeito de pergaminho nas bordas */
+        .npc-group::before, .npc-group::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 25px;
+            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, transparent 70%);
+        }
+        .npc-group::before {
+            top: -10px;
+        }
+        .npc-group::after {
+            bottom: -10px;
+            transform: rotate(180deg);
+        }
+
+        /* Título do grupo dentro do pergaminho */
+        .npc-group h2 {
+            text-align: center;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 28px;
+            color: #5b3010;
+            background-color: #f3d6a4;
+            display: inline-block;
+            padding: 10px 40px;
+            border-radius: 15px;
+            border: 2px solid #b98534;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            margin: 0 auto 30px auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Grade centralizada com duas colunas */
+        .npc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: start;
+        }
+
+        /* Cards com leve efeito 3D no pergaminho */
+        .npc-card {
+            background-color: rgba(51, 33, 16, 0.9);
+            border: 2px solid #d3b37a;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+        }
+
+        .npc-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+        }
+
+        .npc-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+            border: 3px solid #e7c47b;
+            object-fit: cover;
+        }
+
+        .npc-description h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #ffdd9b;
+            text-shadow: 1px 1px 3px #000;
+        }
+
+        .npc-description p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #f1d9b3;
+        }
+
+        /* Botão de voltar */
+        .back-button {
+            background-color: #EBB44D;
+            color: #333;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background-color: #FFC107;
+        }
+
+        /* Responsividade */
+        @media (max-width: 800px) {
+            .npc-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="home.html" class="back-button">Voltar para o Início</a>
+    <h1>═══ ✦ ＮＰＣｓ ✦ ═══</h1>
+
+    <!-- VIS -->
+    <div class="npc-group">
+        <h2>Taoulorn</h2>
+        <div class="npc-grid">
+            <div class="npc-card">
+                <img src="imagens/zodan.PNG" alt="Zodan">
+                <div class="npc-description">
+                    <h3>Zodan</h3>
+                    <p><i>O velho que sabe muito.</i></p>
+                </div>
+            </div>
+
+            <div class="npc-card">
+                <img src="imagens/kamorsha.PNG" alt="Kamorsha">
+                <div class="npc-description">
+                    <h3>Kamorsha</h3>
+                    <p>Molher</p>
+                </div>
+            </div>
+
+            <div class="npc-card">
+                <img src="imagens/DaoMa.PNG" alt="Dao Ma">
+                <div class="npc-description">
+                    <h3>Dao Ma</h3>
+                    <p>Biao Ren</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Albrunz -->
+    <div class="npc-group">
+        <h2>Albrunz</h2>
+        <div class="npc-grid">
+            <div class="npc-card">
+                <img src="imagens/DaoMa.PNG" alt="Dao Ma">
+                <div class="npc-description">
+                    <h3>Dao Ma</h3>
+                    <p>Biao Ren</p>
+                </div>
+            </div>
+
+            <div class="npc-card">
+                <img src="imagens/JosuVess.PNG" alt="JosuVess">
+                <div class="npc-description">
+                    <h3>O Bruxador</h3>
+                    <p>O Destino final de todas as coisas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

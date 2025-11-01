@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itens Mágicos</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
+body {
+    font-family: 'Georgia', serif;
+    background-color: #10141d;
+    color: #e4f2ff;
+    margin: 0;
+    padding: 60px 20px 20px 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #71c4ff;
+    margin-bottom: 40px;
+    font-family: 'Cinzel Decorative', serif;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(113, 196, 255, 0.5);
+}
+
+/* Botão fixo no canto superior esquerdo */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #71c4ff;
+    color: #0a0a0a;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.back-button:hover {
+    background-color: #9ad4ff;
+}
+
+/* Contêiner de categorias (duas colunas) */
+.category-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Cada categoria em formato de pergaminho */
+.category {
+    position: relative;
+    background: linear-gradient(180deg, #3b5069 0%, #2d3e54 40%, #223143 80%, #1b2735 100%);
+    border-radius: 20px;
+    padding: 40px 30px 30px 30px;
+    border: 4px solid #71c4ff;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.4), 0 0 15px rgba(0,0,0,0.4);
+}
+
+/* Efeito de sombra nas extremidades do pergaminho */
+.category::before, .category::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 25px;
+    background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, transparent 70%);
+}
+
+.category::before { top: -10px; }
+.category::after { bottom: -10px; transform: rotate(180deg); }
+
+/* Título da categoria */
+.category h2 {
+    text-align: center;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 26px;
+    color: #e4f2ff;
+    background-color: #193149;
+    display: inline-block;
+    padding: 10px 40px;
+    border-radius: 15px;
+    border: 2px solid #71c4ff;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    margin: 0 auto 30px auto;
+}
+
+/* Lista de itens (1 coluna por grupo) */
+.item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Cartões dos itens */
+.item-card {
+    background-color: rgba(20, 30, 45, 0.9);
+    border: 2px solid #71c4ff;
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.item-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.item-card h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #a9e1ff;
+}
+
+.item-details {
+    display: none;
+    margin-top: 10px;
+}
+
+.expanded .item-details {
+    display: block;
+}
+
+.item-details p {
+    color: #c8e4ff;
+    margin: 10px 0;
+}
+
+.item-details img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 2px solid #71c4ff;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+
+<a href="home.html" class="back-button">← Voltar</a>
+
+<h1>Itens Mágicos</h1>
+
+<div class="category-grid">
+
+    <div class="category">
+        <h2>Armas</h2>
+        <div class="item-list">
+            <div class="item-card" onclick="toggleDetails(this)">
+                <h3>Sunblade</h3>
+                <div class="item-details">
+                    <p>Uma espada</p>
+                    <img src="imagens/sunblade.jpg" alt="Sunblade">
+                </div>
+            </div>
+            <div class="item-card" onclick="toggleDetails(this)">
+                <h3>Lança</h3>
+                <div class="item-details">
+                    <p>Uma lança</p>
+                    <img src="imagens/DaoMa.png" alt="Lança">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2>Anéis</h2>
+        <div class="item-list">
+            <div class="item-card" onclick="toggleDetails(this)">
+                <h3>Anel da Invisibilidade</h3>
+                <div class="item-details">
+                    <p>Um anel</p>
+                    <img src="imagens/DaoMa.png" alt="Anel da Invisibilidade">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function toggleDetails(card) {
+    card.classList.toggle("expanded");
+}
+</script>
+
+</body>
+</html>

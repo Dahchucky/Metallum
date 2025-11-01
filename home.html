@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metallum</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Crimson+Text:wght@600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Crimson Text', serif;
+            background-image: url('https://i.imgur.com/1x7OL41.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: space-between;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Menu lateral estilizado */
+        .menu {
+            width: 25%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(20, 20, 20, 0.9) 100%);
+            box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.1), 0 0 25px rgba(0, 0, 0, 0.7);
+            padding: 30px 20px;
+            color: #f0e6c8;
+            border-right: 2px solid rgba(255, 215, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #f4d36c;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+            letter-spacing: 2px;
+        }
+
+        /* Cartões do menu */
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .card a {
+            color: #f8f5e1;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
+        /* Contador dentro do menu */
+        .countdown {
+            text-align: center;
+            color: #fff4d1;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 18px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 30px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+
+        /* Área principal à direita */
+        .main {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #f5f0e1;
+        font-family: 'Crimson Text', serif;
+        padding: 2rem 3rem;
+        background: rgba(0, 0, 0, 0.4); /* leve escurecimento */
+        border-radius: 20px; /* cantos suaves */
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.6); /* sombra difusa */
+        backdrop-filter: blur(4px); /* dá um leve desfoque no fundo atrás do texto */
+        -webkit-backdrop-filter: blur(4px);
+        transition: all 0.3s ease;
+    }
+
+    .next-session-label {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        opacity: 0.8;
+        margin-bottom: 0.5rem;
+    }
+
+    .next-session-title {
+        font-size: 2.2rem;
+        font-weight: bold;
+        border-top: 2px solid rgba(245,240,225,0.5);
+        border-bottom: 2px solid rgba(245,240,225,0.5);
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    </style>
+</head>
+<body>
+
+    <!-- Menu lateral -->
+    <div class="menu">
+    <div>
+        <h1>⚜ Metallum ⚜</h1>
+        <div class="card"><a href="mapa.html">🗺️ Mapa</a></div>
+        <div class="card"><a href="personagens.html">⚔️ Personagens</a></div>
+<!--        <div class="card"><a href="itens_magicos.html">🔮 Itens Mágicos</a></div>-->
+        <div class="card"><a href="npcs.html">🏰 NPCs</a></div>
+
+        <!-- contador agora vem logo abaixo dos nomes -->
+        <div class="countdown">
+            <span id="countdown"></span>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Área da direita -->
+    <div class="main">
+    <p class="next-session-label">📜 Próximo Encontro</p>
+    <p class="next-session-title">Sessão 0 — Apresentação</p>
+    </div>
+
+    <script>
+        // Data alvo (início da aventura)
+        var countDownDate = new Date("Dec 31, 2026 15:45:00").getTime();
+
+        // Atualiza o contador
+        var countdownfunction = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML =
+                days + " dias<br>" + hours + "h " + minutes + "m " + seconds + "s";
+
+            if (distance < 0) {
+                clearInterval(countdownfunction);
+                document.getElementById("countdown").innerHTML = "A aventura começou!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

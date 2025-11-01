@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #222;
+            color: #FFF;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #FFD700;
+            margin-top: 20px;
+        }
+
+        /* Container do mapa com overflow escondido e limite de zoom */
+        .map-container {
+            position: relative;
+            max-width: 100%;
+            width: 80vw;
+            height: 80vh;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 2px solid #FFF;
+        }
+
+        /* Estilo para o container da imagem e dos pins */
+        .map-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: 0 0;
+            cursor: grab;
+        }
+
+        /* Estilo para a imagem do mapa */
+        .map-image {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Estilo para os pins */
+        .pin {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: #FF0000;
+            border-radius: 50%;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Botões de troca de mapa - estilo semelhante aos pins */
+        .map-button {
+            position: absolute;
+            padding: 10px 15px;
+            background-color: rgba(0, 0, 100, 0.6);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+        }
+
+        .map-button:hover {
+            background-color: rgba(0, 0, 80, 1);
+            color: #FF2;
+        }
+
+        /* Botão de voltar para o mapa inicial */
+        .back-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 10px 20px;
+        background-color: #FFD700;
+        color: #333;
+        text-decoration: none;
+        border-radius: 5px;
+        z-index: 10;
+        }
+
+        .back-button:hover {
+            background-color: #FFC107;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Botão para voltar para a Home -->
+    <a href="home.html" class="back-button">Voltar para o Início</a>
+
+    <!-- Botão para retornar ao mapa inicial -->
+    <button id="returnButton" class="back-button" onclick="returnToInitial()">Voltar para o Mapa Mundi</button>
+
+    <h1>Mapas</h1>
+
+    <!-- Container do mapa -->
+    <div class="map-container" id="mapContainer">
+        <!-- Container da imagem e dos pins -->
+        <div class="map-content" id="mapContent">
+            <img src="imagens/mapa_inicial.png" alt="Mapa Inicial" class="map-image" id="mapImage">
+
+            <!-- Botões de troca de mapas posicionáveis -->
+            <button class="map-button" id="metallumButton" style="top: 60%; left: 20%;" onclick="changeMap('metallum')">Metallum</button>
+            <button class="map-button" id="laylatunButton" style="top: 30%; left: 20%;" onclick="changeMap('laylatun')">Layla'tun</button>
+            <button class="map-button" id="terrasCentraisButton" style="top: 77%; left: 43%;" onclick="changeMap('terrasCentrais')">Terras Centrais</button>
+            <button class="map-button" id="picoDosNaurButton" style="top: 60%; left: 78%;" onclick="changeMap('picoDosNaur')">Pico dos Naur</button>
+        </div>
+    </div>
+
+    <script>
+        let scale = 1;
+        let isDragging = false;
+        let startX, startY, lastX = 0, lastY = 0;
+
+        const mapContainer = document.getElementById('mapContainer');
+        const mapContent = document.getElementById('mapContent');
+        const mapImage = document.getElementById('mapImage');
+
+        // Botões de troca de mapa
+        const mapButtons = document.querySelectorAll('.map-button');
+        const returnButton = document.getElementById('returnButton');
+
+        // Função para alterar o mapa
+        function changeMap(map) {
+            switch (map) {
+                case 'metallum':
+                    mapImage.src = 'imagens/Metallum.png';
+                    break;
+                case 'laylatun':
+                    mapImage.src = 'imagens/laylatun.png';
+                    break;
+                case 'terrasCentrais':
+                    mapImage.src = 'imagens/terrasCentrais.png';
+                    break;
+                case 'picoDosNaur':
+                    mapImage.src = 'imagens/picoDosNaur.png';
+                    break;
+            }
+            // Esconde os botões de troca de mapa e exibe o botão de voltar
+            hideMapButtons();
+            showReturnButton();
+        }
+
+        // Função para retornar ao mapa inicial
+        function returnToInitial() {
+            mapImage.src = 'imagens/mapa_inicial.png';
+            showMapButtons();
+            hideReturnButton();
+        }
+
+        // Esconder os botões de troca de mapa
+        function hideMapButtons() {
+            mapButtons.forEach(button => {
+                button.style.display = 'none';
+            });
+        }
+
+        // Mostrar os botões de troca de mapa
+        function showMapButtons() {
+            mapButtons.forEach(button => {
+                button.style.display = 'block';
+            });
+        }
+
+        // Exibir o botão de voltar para o mapa inicial
+        function showReturnButton() {
+            returnButton.style.display = 'block';
+        }
+
+        // Ocultar o botão de voltar
+        function hideReturnButton() {
+            returnButton.style.display = 'none';
+        }
+
+        // Função para aplicar o zoom a partir da posição do mouse
+        mapContainer.addEventListener('wheel', function(event) {
+            event.preventDefault();
+
+            const zoomIntensity = 0.1;
+            const mouseX = event.clientX - mapContainer.getBoundingClientRect().left;
+            const mouseY = event.clientY - mapContainer.getBoundingClientRect().top;
+
+            // Posição do mapa antes do zoom
+            const mapX = (mouseX - lastX) / scale;
+            const mapY = (mouseY - lastY) / scale;
+
+            // Alterar o scale
+            const newScale = scale - (event.deltaY * zoomIntensity / 100);
+            scale = Math.min(Math.max(1, newScale), 5); // Limitar o zoom entre 1x e 5x
+
+            // Nova posição após o zoom
+            lastX = mouseX - mapX * scale;
+            lastY = mouseY - mapY * scale;
+
+            mapContent.style.transform = `translate(${lastX}px, ${lastY}px) scale(${scale})`;
+        });
+
+        // Função para iniciar o arraste
+        mapContent.addEventListener('mousedown', function(event) {
+            event.preventDefault();
+            isDragging = true;
+            mapContent.style.cursor = 'grabbing';
+            startX = event.clientX - lastX;
+            startY = event.clientY - lastY;
+        });
+
+        // Função para finalizar o arraste
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+            mapContent.style.cursor = 'grab';
+        });
+
+        // Função para realizar o arraste do mapa
+        mapContent.addEventListener('mousemove', function(event) {
+            if (isDragging) {
+                lastX = event.clientX - startX;
+                lastY = event.clientY - startY;
+                mapContent.style.transform = `translate(${lastX}px, ${lastY}px) scale(${scale})`;
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personagens</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('imagens/taoulorn.webp'); /* imagem de fundo */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5); /* Máscara escura */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; /* 271.5 */
+            z-index: -1; /* Coloca a máscara acima da imagem de fundo, mas abaixo do conteúdo */
+        }
+
+        h1 {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .back-button {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .back-button a {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button a:hover {
+            background-color: #0056b3;
+        }
+
+        .card {
+            width: 300px;
+            height: 450px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            overflow: hidden; /* Para cortar o conteúdo que passa do limite do card */
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo semitransparente */
+            color: white;
+            padding: 10px;
+            text-align: center;
+            box-sizing: border-box; /* Garante que padding não aumenta o tamanho do card */
+        }
+
+        .card h2 {
+            font-size: 22px;
+            margin: 5px 0;
+        }
+
+        .card p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div> <!-- Máscara escura -->
+
+    <!-- Botão para voltar para a Home -->
+    <div class="back-button">
+        <a href="home.html">Voltar para o Início</a>
+    </div>
+
+    <h1>Personagens</h1>
+
+    <!-- Cartão 1 - Argo -->
+    <div class="card" style="background-image: url('imagens/argon.png');" onclick="window.open('fichas/argon.pdf', '_blank')">
+        <div class="card-content">
+            <h2>Nome: Argon</h2>
+            <p>Raça: Meio-Elfo</p>
+            <p>Classe: Dragon Slayer</p>
+        </div>
+    </div>
+
+    <!-- Cartão 2 - Juan -->
+    <div class="card" style="background-image: url('imagens/juan.png');" onclick="window.open('https://www.dndbeyond.com/sheet-pdfs/kingl4zy_134963338.pdf', '_blank')">
+        <div class="card-content">
+            <h2>Nome: Cramunhão</h2>
+            <p>Raça: Nahudra</p>
+            <p>Classe: Bloodhunter</p>
+        </div>
+    </div>
+
+    <!-- Cartão 3 - Alan Berolla -->
+    <div class="card" style="background-image: url('imagens/alan_berolla.png');" onclick="window.open('fichas/alan_berolla.pdf', '_blank')">
+        <div class="card-content">
+            <h2>Nome: Alan Berrola</h2>
+            <p>Raça: Meio-Elfo</p>
+            <p>Classe: Pistoleiro / Bloodhunter</p>
+        </div>
+    </div>
+
+    <!-- Cartão 4 - Erato -->
+    <div class="card" style="background-image: url('imagens/erato.png');" onclick="window.open('fichas/erato.pdf', '_blank')">
+        <div class="card-content">
+            <h2>Nome: Erato</h2>
+            <p>Raça: Starborn</p>
+            <p>Classe: Astromancer</p>
+        </div>
+    </div>
+
+    <!-- Cartão 5 - Josu Vess -->
+    <div class="card" style="background-image: url('imagens/josu_vess.png');" onclick="window.open('fichas/josu_vess.pdf', '_blank')">
+        <div class="card-content">
+            <h2>Nome: Josu Vess</h2>
+            <p>Raça: Drow</p>
+            <p>Classe: Bruxo</p>
+        </div>
+    </div>
+
+    <!-- Cartão 6 - Granola -->
+    <div class="card" style="background-image: url('imagens/granola.png');" onclick="window.open('https://www.dndbeyond.com/sheet-pdfs/Dahchucky_33919247.pdf', '_blank')">
+        <div class="card-content">
+            <h2>Nome: Granola</h2>
+            <p>Raça: Anão</p>
+            <p>Classe: Paladino</p>
+        </div>
+    </div>
+
+    <!-- Cartão 7 - Tobias Toko -->
+    <div class="card" style="background-image: url('imagens/tobias_toko.png');" onclick="window.open('fichas/tobias_toko.pdf', '_blank')">
+        <div class="card-content">
+            <h2>Nome: Tobias Toko</h2>
+            <p>Raça: Firbolg</p>
+            <p>Classe: Druida</p>
+        </div>
+    </div>
+
+    <h1>Companheiros</h1>
+
+    <!-- Cartão 1 - Crow -->
+    <div class="card" style="background-image: url('imagens/crow.webp');" onclick="window.open('fichas/crow.pdf', '_blank')">
+        <div class="card-content">
+            <h2>Nome: Crow</h2>
+            <p>Raça: Dragão</p>
+            <p>Vinculado à: Argon</p>
+        </div>
+    </div>
+
+</body>
+</html>
